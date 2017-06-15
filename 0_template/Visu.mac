@@ -1,0 +1,13 @@
+/vis/open OGLIX
+/vis/viewer/reset
+/vis/viewer/set/viewpointThetaPhi 30 60
+/vis/viewer/zoom 3
+/vis/viewer/set/style wireframe
+/vis/drawVolume
+/vis/viewer/flush #new
+/tracking/storeTrajectory 1
+/vis/scene/add/trajectories #new
+/vis/scene/add/hits #new
+/vis/scene/endOfEventAction accumulate
+/vis/reviewKeptEvents
+

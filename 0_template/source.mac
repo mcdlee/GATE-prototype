@@ -1,0 +1,17 @@
+## PHANTOM
+
+/gate/source/addSource Tc99m
+/gate/source/Tc99m/gps/type Volume #new
+/gate/source/Tc99m/gps/shape Cylinder #new
+/gate/source/Tc99m/gps/radius 2. mm  #new 
+/gate/source/Tc99m/gps/halfz 200. mm #new
+/gate/source/Tc99m/gps/centre 0. 0. 0. cm #new
+
+/gate/source/Tc99m/gps/particle gamma
+/gate/source/Tc99m/gps/monoenergy 140. keV
+/gate/source/Tc99m/setForcedUnstableFlag true
+/gate/source/Tc99m/setForcedHalfLife 21624 s
+/gate/source/Tc99m/setActivity 0.1 mCi 
+/gate/source/Tc99m/gps/angtype iso
+
+/gate/source/Tc99m/attachTo phantom

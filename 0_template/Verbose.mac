@@ -1,0 +1,14 @@
+# VERBOSITY
+/control/verbose 0
+#/grdm/verbose 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+#/gate/application/verbose 0
+#/gate/generator/verbose 0
+#/gate/stacking/verbose 0
+#/gate/event/verbose 0
+/gate/source/verbose 1
+/gate/output/verbose 2
+/hits/verbose 1 #new
+

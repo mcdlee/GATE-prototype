@@ -1,0 +1,98 @@
+# GEOMETRY
+####
+
+# Scanner Head
+
+## 位置可從 dicom 寫入
+# Create a new box representing the main head-volume
+# SPECThead is the name of the predefined SPECT system
+# Create the SPECT system, which will yield an Interfile output of projection data
+/gate/world/daughters/name SPECThead
+/gate/world/daughters/insert box
+/gate/SPECThead/geometry/setXLength 59.354 cm
+/gate/SPECThead/geometry/setYLength 11.445 cm
+/gate/SPECThead/geometry/setZLength 44.754 cm
+/gate/SPECThead/placement/setTranslation  0. 20. 0. cm
+/gate/SPECThead/setMaterial Air
+/gate/SPECThead/vis/forceWireframe
+
+# Shielding
+# Create the shielding volume
+/gate/SPECThead/daughters/name shielding
+/gate/SPECThead/daughters/insert box
+/gate/shielding/geometry/setXLength 59.354 cm
+/gate/shielding/geometry/setYLength 11.445 cm
+/gate/shielding/geometry/setZLength 44.754 cm
+/gate/shielding/placement/setTranslation  0. 0. 0. cm
+/gate/shielding/setMaterial Lead
+/gate/shielding/vis/setColor red
+/gate/shielding/vis/forceWireframe
+
+# Siemens Symbia T LEAP collimator
+/gate/SPECThead/daughters/name collimator
+/gate/SPECThead/daughters/insert box 
+/gate/collimator/geometry/setXLength 59.1 cm
+/gate/collimator/geometry/setYLength 44.5 cm
+/gate/collimator/geometry/setZLength 2.405 cm
+/gate/collimator/placement/setRotationAxis 1 0 0
+/gate/collimator/placement/setRotationAngle 90 deg
+/gate/collimator/placement/setTranslation 0 -4.52 0 cm 
+/gate/collimator/setMaterial Lead 
+/gate/collimator/vis/setColor blue 
+/gate/collimator/vis/forceWireframe 
+
+## hole of collimator
+/gate/collimator/daughters/name hole 
+/gate/collimator/daughters/insert hexagone 
+/gate/hole/geometry/setRadius 0.725 mm 
+/gate/hole/geometry/setHeight 2.405 cm
+/gate/hole/placement/setTranslation 0 0 0 cm 
+/gate/hole/placement/setRotationAxis 0 0 1
+/gate/hole/placement/setRotationAngle 30 deg
+/gate/hole/setMaterial Air
+/gate/hole/vis/setColor blue 
+/gate/hole/vis/forceWireframe
+
+### Repeat of holes
+/gate/hole/repeaters/insert cubicArray
+/gate/hole/cubicArray/setRepeatNumberX 355 #59.1/0.165=358.1818
+/gate/hole/cubicArray/setRepeatNumberY 150 #44.5/0.285788=156.14035
+/gate/hole/cubicArray/setRepeatNumberZ 1
+/gate/hole/cubicArray/setRepeatVector 1.65 2.85788 0 mm
+/gate/hole/repeaters/insert linear
+/gate/hole/linear/setRepeatNumber 2
+/gate/hole/linear/setRepeatVector 0.825 1.42894 0 mm 
+
+## CRYSTAL
+/gate/SPECThead/daughters/name crystal
+/gate/SPECThead/daughters/insert box 
+/gate/crystal/geometry/setXLength 59.1 cm
+/gate/crystal/geometry/setYLength 1.59 cm
+/gate/crystal/geometry/setZLength 44.5 cm
+/gate/crystal/placement/setTranslation 0 -2.5225 0 cm
+/gate/crystal/setMaterial NaI
+/gate/crystal/vis/setColor yellow
+
+/gate/geometry/rebuild
+
+## Back-compartment
+# Create the back-compartment volume
+/gate/SPECThead/daughters/name compartment
+/gate/SPECThead/daughters/insert box
+/gate/compartment/geometry/setXLength 53.3 cm
+/gate/compartment/geometry/setYLength 6.5 cm
+/gate/compartment/geometry/setZLength 38.7 cm
+/gate/compartment/placement/setTranslation   0. 1.5225 0  cm
+/gate/compartment/setMaterial Glass
+/gate/compartment/vis/setColor grey
+
+/gate/geometry/rebuild
+
+### Attach
+/gate/shielding/attachPhantomSD
+/gate/collimator/attachPhantomSD
+/gate/systems/SPECThead/crystal/attach crystal
+/gate/crystal/attachCrystalSD
+/gate/compartment/attachPhantomSD
+/gate/systems/SPECThead/describe #new
+

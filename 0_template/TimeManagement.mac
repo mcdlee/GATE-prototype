@@ -1,0 +1,35 @@
+#----------------------------------------------------------------------#
+#                                                                      #
+#                   Source code developed by the                       #
+#               Medical Image Processing Laboratory                    #
+#                     (C) Copyright 2006-2010                          #
+#      Department of Biomedical Engineering & Environmental Sciences   #
+#               National Tsing Hua University,Taiwan                   #
+#                       All Rights Reserved                            #
+#                                                                      #
+#----------------------------------------------------------------------#
+#                                                                      #
+#              Author            : muska                               #
+#              Data last revised : 2008/3/13                           #
+#              Data Originated   : 2008/3/13                           #
+#              Purpose : Construct the Time Management Parameter file  #
+#                                                                      #
+#                                                                      #
+#              Reference         :                                     #
+#                                                                      #
+#                                                                      #
+#                                                                      #
+#----------------------------------------------------------------------#
+#                                                                      #
+#	             S T A R T   A C Q U I S I T I O N                 #
+#                                                                      #
+#----------------------------------------------------------------------#
+
+
+#----------------------------------------------------------------------
+#   NOW!!! LET'S RUN THE SIMULATION ~
+#----------------------------------------------------------------------
+/gate/application/setTimeSlice     20.  s
+/gate/application/setTimeStart     0.  s
+/gate/application/setTimeStop     20.  s
+/gate/application/startDAQ

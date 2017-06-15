@@ -1,0 +1,44 @@
+#----------------------------------------------------------------------#
+#                                                                      #
+#                   Source code developed by the                       #
+#               Medical Image Processing Laboratory                    #
+#                     (C) Copyright 2006-2010                          #
+#      Department of Biomedical Engineering & Environmental Sciences   #
+#               National Tsing Hua University,Taiwan                   #
+#                       All Rights Reserved                            #
+#                                                                      #
+#----------------------------------------------------------------------#
+#                                                                      #
+#              Author            : muska                               #
+#              Data last revised : 2008/3/13                           #
+#              Data Originated   : 2008/3/13                           #
+#              Purpose : Construct the acquisition parameter file      #
+#                                                                      #
+#                                                                      #
+#              Reference         :                                     #
+#                                                                      #
+#                                                                      #
+#                                                                      #
+#----------------------------------------------------------------------#
+#                                                                      #
+#             A C Q U I S I T I O N    P A R A M E T E R S             #
+#                                                                      #
+#----------------------------------------------------------------------#
+
+# DIGITIZER
+# The digitizer tracks what happens in the detection system and in the electronics
+# Build a digitizer that first computes the centroid of interactions
+/gate/digitizer/Singles/insert adder
+/gate/digitizer/Singles/insert readout    #new
+/gate/digitizer/Singles/readout/setDepth 1 #new	
+/gate/digitizer/Singles/insert blurring
+/gate/digitizer/Singles/blurring/setLaw inverseSquare #new description
+/gate/digitizer/Singles/blurring/inverseSquare/setResolution 0.15 #new description
+/gate/digitizer/Singles/blurring/inverseSquare/setEnergyOfReference 140. keV #new description
+/gate/digitizer/Singles/insert spblurring
+/gate/digitizer/Singles/spblurring/setSpresolution 2.0 mm
+/gate/digitizer/Singles/spblurring/verbose 0
+/gate/digitizer/Singles/insert thresholder
+/gate/digitizer/Singles/thresholder/setThreshold 126 keV
+/gate/digitizer/Singles/insert upholder
+/gate/digitizer/Singles/upholder/setUphold 154 keV

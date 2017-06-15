@@ -1,0 +1,44 @@
+##Physics
+
+/gate/physics/addPhysicsList  emstandard_opt3
+/gate/physics/addProcess RadioactiveDecay
+#----------------------------------------------------------------------
+#       EM  P R O C E S S
+#----------------------------------------------------------------------
+#/gate/physics/addProcess PhotoElectric
+#/gate/physics/processes/PhotoElectric/setModel StandardModel
+
+#/gate/physics/addProcess Compton
+#/gate/physics/processes/Compton/setModel PenelopeModel
+
+#/gate/physics/addProcess RayleighScattering
+#/gate/physics/processes/RayleighScattering/setModel PenelopeModel
+
+#/gate/physics/addProcess ElectronIonisation
+#/gate/physics/processes/ElectronIonisation/setModel StandardModel e-
+
+#/gate/physics/addProcess Bremsstrahlung
+#/gate/physics/processes/Bremsstrahlung/setModel StandardModel e-
+
+#/gate/physics/addProcess MultipleScattering e-
+
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+
+
+#----------------------------------------------------------------------
+#	    I N A C T I V E    S E C O N D A R Y   E L E C T R O N S 
+#----------------------------------------------------------------------
+
+#/gate/physics/setElectronCut 30. cm
+
+/gate/physics/Electron/SetCutInRegion   SPECThead 1.0 cm
+
+#----------------------------------------------------------------------
+#	    I N A C T I V E    X - R A Y S
+#----------------------------------------------------------------------
+
+#/gate/physics/setXRayCut 1. GeV
+#/gate/physics/setDeltaRayCut 1. GeV
+
+/gate/physics/Gamma/SetCutInRegion      SPECThead 0.1 cm
